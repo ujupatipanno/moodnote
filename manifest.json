@@ -1,0 +1,10 @@
+{
+  "id": "moodnote",
+  "name": "Moodnote",
+  "version": "0.1.0",
+  "minAppVersion": "1.6.0",
+  "description": "월별 moodnote를 열거나 생성하고 오늘 날짜로 이동합니다.",
+  "author": "ujupatipanno",
+  "authorUrl": "https://github.com/ujupatipanno",
+  "isDesktopOnly": false
+}
