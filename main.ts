@@ -15,25 +15,25 @@ export default class MoodnotePlugin extends Plugin {
 		await this.loadSettings();
 
 		// 리본 메뉴: 오늘자 월별 노트 열기
-		this.addRibbonIcon("calendar", "오늘 moodnote 열기", async () => {
+		this.addRibbonIcon("calendar", "감정노트 열기", async () => {
 			try {
 				await this.openOrCreateMonthlyNoteAndJumpToToday();
 			} catch (e) {
 				console.error(e);
-				new Notice("moodnote 실행 중 오류가 발생했습니다");
+				new Notice("감정노트 열기 중 오류가 발생했습니다");
 			}
 		});
 
 		this.addCommand({
 			id: "moodnote-open-or-create-current-month",
-			name: "오늘 moodnote 열기",
+			name: "감정노트 열기",
 			icon: "calendar",
 			callback: async () => {
 				try {
 					await this.openOrCreateMonthlyNoteAndJumpToToday();
 				} catch (e) {
 					console.error(e);
-					new Notice("moodnote 실행 중 오류가 발생했습니다");
+					new Notice("감정노트 열기 중 오류가 발생했습니다");
 				}
 			},
 		});
