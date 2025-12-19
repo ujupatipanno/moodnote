@@ -121,6 +121,7 @@ export default class MoodnotePlugin extends Plugin {
 		// 오늘 헤더 위치로 커서 이동 및 스크롤
 		const fullText = editor.getValue();
 		const pos = fullText.indexOf(todayHeader);
+		editor.focus();
 		if (pos >= 0) {
 			const before = fullText.slice(0, pos);
 			const headerLine = before.split("\n").length - 1;
@@ -145,6 +146,11 @@ export default class MoodnotePlugin extends Plugin {
 			}
 			const targetCh = lines[targetLine]?.length ?? 0; // 해당 라인의 끝으로 이동
 			editor.setCursor({ line: targetLine, ch: targetCh });
+			// 스크롤을 물리적 끝까지 밀기
+			if ((editor as any).cm?.scrollDOM) {
+				const scrollEl = (editor as any).cm.scrollDOM;
+				scrollEl.scrollTop = scrollEl.scrollHeight - scrollEl.clientHeight;
+			}
 		} else {
 			// 폴백: 맨 끝으로 이동
 			const lastLine = editor.lineCount() - 1;
